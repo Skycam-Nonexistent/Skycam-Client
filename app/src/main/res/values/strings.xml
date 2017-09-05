@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Skycam</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="input_url">输入URL</string>
+    <string name="upload_pic">上传图片</string>
+    <string name="auto_trace">自动追踪</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="refresh">刷新</string>
+    <string name="mkdir_failed">目录创建失败</string>
+    <string name="shoot_success">拍照成功！</string>
+
 </resources>

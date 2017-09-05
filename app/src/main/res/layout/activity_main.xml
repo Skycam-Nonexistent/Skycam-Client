@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,37 +9,67 @@
     <WebView
         android:id="@+id/WebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_height="match_parent"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/FabShoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:src="@android:drawable/ic_menu_camera"
-        app:backgroundTint="@android:color/holo_red_light"
-        app:elevation="4dp"
         app:fabSize="normal"
-        app:rippleColor="@android:color/white" />
+        app:fab_colorNormal="@color/red_A400"
+        app:fab_colorPressed="@color/red_A200"
+        tools:ignore="RtlHardcoded"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/FabMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        android:src="@android:drawable/ic_menu_add"
-        app:backgroundTint="@android:color/holo_red_light"
-        app:elevation="4dp"
-        app:fabSize="normal"
-        app:rippleColor="@android:color/white" />
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:fab_addButtonColorNormal="@color/red_A400"
+        app:fab_addButtonColorPressed="@color/red_A200"
+        app:fab_addButtonPlusIconColor="@color/white"
+        app:fab_addButtonSize="normal"
+        app:fab_labelStyle="@style/MenuLabelsStyle"
+        app:fab_labelsPosition="left"
 
-</RelativeLayout>
+        tools:ignore="RtlHardcoded">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ButtonAutoTrace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_compass"
+            app:fab_colorNormal="@color/red_A200"
+            app:fab_colorPressed="@color/red_A100"
+            app:fab_size="mini"
+            app:fab_title="@string/auto_trace"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ButtonUploadPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_upload"
+            app:fab_colorNormal="@color/red_A200"
+            app:fab_colorPressed="@color/red_A100"
+            app:fab_size="mini"
+            app:fab_title="@string/upload_pic"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ButtonInputUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_edit"
+            app:fab_colorNormal="@color/red_A200"
+            app:fab_colorPressed="@color/red_A100"
+            app:fab_size="mini"
+            app:fab_title="@string/input_url"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</android.support.design.widget.CoordinatorLayout>

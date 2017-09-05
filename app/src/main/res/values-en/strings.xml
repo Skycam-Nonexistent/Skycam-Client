@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Skycam</string>
+    <string name="auto_trace">Auto trace</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">OK</string>
+    <string name="input_url">Input URL</string>
+    <string name="upload_pic">Upload a pic</string>
+    <string name="refresh">refresh</string>
+    <string name="mkdir_failed">Failed to create folder.</string>
+    <string name="shoot_success">Screenshot created!</string>
+</resources>
