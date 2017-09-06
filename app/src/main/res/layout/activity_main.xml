@@ -13,6 +13,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"/>
 
@@ -21,13 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:src="@android:drawable/ic_menu_camera"
         app:fabSize="normal"
         app:fab_colorNormal="@color/red_A400"
-        app:fab_colorPressed="@color/red_A200"
-        tools:ignore="RtlHardcoded"/>
+        app:fab_colorPressed="@color/red_A200"/>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fabMore"
@@ -36,6 +38,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:fab_addButtonColorNormal="@color/red_A400"
         app:fab_addButtonColorPressed="@color/red_A200"
         app:fab_addButtonPlusIconColor="@color/white"

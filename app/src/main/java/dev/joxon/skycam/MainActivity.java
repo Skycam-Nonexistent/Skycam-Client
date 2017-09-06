@@ -3,12 +3,16 @@ package dev.joxon.skycam;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -32,7 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
     private FloatingActionsMenu floatingActionsMenu;
+
     private static final String DEFAULT_URL = "http://10.206.12.207:8080";
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && floatingActionsMenu.isExpanded()) {
+            floatingActionsMenu.collapse();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +58,30 @@ public class MainActivity extends AppCompatActivity {
 
         // Display
         webView = findViewById(R.id.webView);
+        webView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                webView.reload();
+                if (floatingActionsMenu.isExpanded()) {
+                    floatingActionsMenu.collapse();
+                }
+                return (motionEvent.getAction() == MotionEvent.ACTION_MOVE);
+            }
+        });
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setHorizontalScrollBarEnabled(false);
         webView.setDrawingCacheEnabled(true);
+        webView.setBackgroundColor(Color.TRANSPARENT);
+        //webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         // Add timeout actions?
         webView.loadUrl(DEFAULT_URL);
 
-        floatingActionsMenu = findViewById(R.id.fabMore);
         // Input URL
+        floatingActionsMenu = findViewById(R.id.fabMore);
         findViewById(R.id.buttonInputUrl).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
