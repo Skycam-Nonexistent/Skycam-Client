@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Display
-        webView = findViewById(R.id.WebView);
+        webView = findViewById(R.id.webView);
         webView.setDrawingCacheEnabled(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
         // Add timeout actions?
         webView.loadUrl(DEFAULT_URL);
 
-        floatingActionsMenu = findViewById(R.id.FabMore);
+        floatingActionsMenu = findViewById(R.id.fabMore);
         // Input URL
-        findViewById(R.id.ButtonInputUrl).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonInputUrl).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 floatingActionsMenu.collapse();
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Auto Trace
-        findViewById(R.id.ButtonAutoTrace).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonAutoTrace).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 floatingActionsMenu.collapse();
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Upload pics
-        findViewById(R.id.ButtonUploadPic).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonUploadPic).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 floatingActionsMenu.collapse();
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Take screenshots
-        findViewById(R.id.FabShoot).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fabShoot).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String path = Environment.getExternalStorageDirectory().getPath() + "/Skycam/";

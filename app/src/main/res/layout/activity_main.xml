@@ -4,18 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <WebView
-        android:id="@+id/WebView"
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
 
     <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/FabShoot"
+        android:id="@+id/fabShoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
+        android:layout_gravity="top|end"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:src="@android:drawable/ic_menu_camera"
@@ -25,23 +30,21 @@
         tools:ignore="RtlHardcoded"/>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/FabMore"
+        android:id="@+id/fabMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         app:fab_addButtonColorNormal="@color/red_A400"
         app:fab_addButtonColorPressed="@color/red_A200"
         app:fab_addButtonPlusIconColor="@color/white"
         app:fab_addButtonSize="normal"
         app:fab_labelStyle="@style/MenuLabelsStyle"
-        app:fab_labelsPosition="left"
-
-        tools:ignore="RtlHardcoded">
+        app:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/ButtonAutoTrace"
+            android:id="@+id/buttonAutoTrace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_compass"
@@ -51,7 +54,7 @@
             app:fab_title="@string/auto_trace"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/ButtonUploadPic"
+            android:id="@+id/buttonUploadPic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_upload"
@@ -61,7 +64,7 @@
             app:fab_title="@string/upload_pic"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/ButtonInputUrl"
+            android:id="@+id/buttonInputUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_edit"
