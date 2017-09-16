@@ -1,19 +1,22 @@
 package dev.joxon.skycam;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.DhcpInfo;
+import android.net.wifi.WifiManager;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
@@ -34,10 +37,9 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private WebView webView;
     private FloatingActionsMenu floatingActionsMenu;
-
-    private static final String DEFAULT_URL = "http://10.206.12.207:8080";
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -55,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
         // Force landscape
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
+
+        // Get server IP
+        Context appContext = getApplicationContext();
+        WifiManager wifiManager = (WifiManager) appContext.getSystemService(Context.WIFI_SERVICE);
+        DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
+        final String serverIP = Formatter.formatIpAddress(dhcpInfo.gateway);
+        final String serverPort = "8080";
+        final String http = "http://";
+        final String serverURL=http + serverIP + ":" + serverPort;
 
         // Display
         webView = findViewById(R.id.webView);
@@ -78,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         // Add timeout actions?
-        webView.loadUrl(DEFAULT_URL);
+        webView.loadUrl(serverURL);
 
         // Input URL
         floatingActionsMenu = findViewById(R.id.fabMore);
@@ -88,10 +99,9 @@ public class MainActivity extends AppCompatActivity {
                 floatingActionsMenu.collapse();
 
                 final EditText editText = new EditText(MainActivity.this);
-                final String http = "http://";
                 editText.setSingleLine();
-                editText.setText(http);
-                editText.setSelection(http.length());
+                editText.setText(serverURL);
+                editText.setSelection(http.length(),http.length()+serverIP.length());
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle(R.string.input_url)
